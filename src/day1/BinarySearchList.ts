@@ -1,5 +1,14 @@
 export default function bs_list(haystack: number[], needle: number): boolean {
-    return bs(haystack, needle, 0, haystack.length);
+    let low = 0;
+    let high = haystack.length;
+    do {
+        const mid = Math.floor(low + (high - low) /2);
+        if (haystack[mid] === needle) return true;
+        else if (haystack[mid] > needle) high = mid;
+        else low = mid + 1;
+    } while(low < high)
+    return false;
+    ///return bs(haystack, needle, 0, haystack.length);
 }
 
 function bs(haystack: number[], needle: number, lowIndex: number, highIndex: number): boolean {
